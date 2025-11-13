@@ -78,11 +78,24 @@ func (l *Lexer) NextToken() token.Token {
 
 	switch l.ch {
 	case '=':
-		tok = newToken(token.ASSIGN, l.ch)
+		// Check if next character is '=' too
+		if l.input[l.readPosition] == '=' {
+			tok.Literal = "=="
+			tok.Type = token.EQ
+			l.readChar()
+		} else {
+			tok = newToken(token.ASSIGN, l.ch)
+		}
 	case '+':
 		tok = newToken(token.PLUS, l.ch)
 	case '!':
-		tok = newToken(token.BANG, l.ch)
+		if l.input[l.readPosition] == '=' {
+			tok.Literal = "!="
+			tok.Type = token.NOT_EQ
+			l.readChar()
+		} else {
+			tok = newToken(token.BANG, l.ch)
+		}
 	case '/':
 		tok = newToken(token.SLASH, l.ch)
 	case '-':
@@ -90,9 +103,21 @@ func (l *Lexer) NextToken() token.Token {
 	case '*':
 		tok = newToken(token.ASTERISK, l.ch)
 	case '<':
-		tok = newToken(token.LT, l.ch)
+		if l.input[l.readPosition] == '=' {
+			tok.Literal = "<="
+			tok.Type = token.LT_OR_EQ
+			l.readChar()
+		} else {
+			tok = newToken(token.LT, l.ch)
+		}
 	case '>':
-		tok = newToken(token.GT, l.ch)
+		if l.input[l.readPosition] == '=' {
+			tok.Literal = ">="
+			tok.Type = token.GT_OR_EQ
+			l.readChar()
+		} else {
+			tok = newToken(token.GT, l.ch)
+		}
 	case ',':
 		tok = newToken(token.COMMA, l.ch)
 	case ';':

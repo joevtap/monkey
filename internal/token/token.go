@@ -22,7 +22,11 @@ const (
 	ASTERISK
 
 	LT
+	LT_OR_EQ
 	GT
+	GT_OR_EQ
+	EQ
+	NOT_EQ
 
 	COMMA
 	SEMICOLON

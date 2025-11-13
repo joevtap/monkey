@@ -27,6 +27,14 @@ if (true) {
 } else {
 	return false;
 }
+
+50 == 25 * 2;
+
+10 != 1;
+
+1 <= 2;
+
+2 >= 2;
 `
 
 		tests := []struct {
@@ -96,6 +104,24 @@ if (true) {
 			{token.FALSE, "false"},
 			{token.SEMICOLON, ";"},
 			{token.RBRACE, "}"},
+			{token.INT, "50"},
+			{token.EQ, "=="},
+			{token.INT, "25"},
+			{token.ASTERISK, "*"},
+			{token.INT, "2"},
+			{token.SEMICOLON, ";"},
+			{token.INT, "10"},
+			{token.NOT_EQ, "!="},
+			{token.INT, "1"},
+			{token.SEMICOLON, ";"},
+			{token.INT, "1"},
+			{token.LT_OR_EQ, "<="},
+			{token.INT, "2"},
+			{token.SEMICOLON, ";"},
+			{token.INT, "2"},
+			{token.GT_OR_EQ, ">="},
+			{token.INT, "2"},
+			{token.SEMICOLON, ";"},
 			{token.EOF, ""},
 		}
 
