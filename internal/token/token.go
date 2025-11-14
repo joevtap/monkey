@@ -1,6 +1,6 @@
 package token
 
-type TokenType int
+type TokenType string
 
 type Token struct {
 	Type    TokenType
@@ -8,44 +8,45 @@ type Token struct {
 }
 
 const (
-	EOF = iota
-	ILLEGAL
+	EOF     = "EOF"
+	ILLEGAL = "ILLEGAL"
 
-	IDENT
-	INT
+	IDENT = "IDENT"
+	INT = "INT"
 
-	ASSIGN
-	PLUS
-	BANG
-	SLASH
-	MINUS
-	ASTERISK
+	ASSIGN = "ASSIGN"
+	PLUS = "PLUS"
+	BANG = "BANG"
+	SLASH = "SLASH"
+	MINUS = "MINUS"
+	ASTERISK = "ASTERISK"
 
-	LT
-	LT_OR_EQ
-	GT
-	GT_OR_EQ
-	EQ
-	NOT_EQ
+	LT = "LT"
+	LT_OR_EQ = "LT_OR_EQ"
+	GT = "GT"
+	GT_OR_EQ = "GT_OR_EQ"
+	EQ = "EQ"
+	NOT_EQ = "NOT_EQ"
 
-	COMMA
-	SEMICOLON
+	COMMA = "COMMA"
+	SEMICOLON = "SEMICOLON"
 
-	LPAREN
-	RPAREN
-	LBRACE
-	RBRACE
+	LPAREN = "LPAREN"
+	RPAREN = "RPAREN"
+	LBRACE = "LBRACE"
+	RBRACE = "RBRACE"
 
-	FUNCTION
-	LET
+	FUNCTION = "FUNCTION"
 
-	IF
-	ELSE
+	LET = "LET"
 
-	TRUE
-	FALSE
+	IF = "IF"
+	ELSE = "ELSE"
 
-	RETURN
+	TRUE = "TRUE"
+	FALSE = "FALSE"
+
+	RETURN = "RETURN"
 )
 
 var keywords = map[string]TokenType{

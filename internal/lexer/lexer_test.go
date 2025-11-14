@@ -131,11 +131,11 @@ if (true) {
 			tok := l.NextToken()
 
 			if tok.Type != tt.expectedType {
-				t.Fatalf("Test %d: want %d got %d", i, tt.expectedType, tok.Type)
+				t.Fatalf("Test %d: want %v got %v", i, tt.expectedType, tok.Type)
 			}
 
 			if tok.Literal != tt.expectedLiteral {
-				t.Fatalf("Test %d: want %s got %s", i, tt.expectedLiteral, tok.Literal)
+				t.Fatalf("Test %d: want %v got %v", i, tt.expectedLiteral, tok.Literal)
 			}
 
 			t.Log(tok)
