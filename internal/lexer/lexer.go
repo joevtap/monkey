@@ -5,7 +5,7 @@ import "github.com/joevtap/monkey/internal/token"
 type Lexer struct {
 	input        string
 	position     int
-	readPosition int
+	peekPosition int
 	ch           byte
 }
 
@@ -13,7 +13,7 @@ func New(input string) *Lexer {
 	l := &Lexer{
 		input:        input,
 		position:     0,
-		readPosition: 0,
+		peekPosition: 0,
 		ch:           0,
 	}
 
@@ -23,22 +23,22 @@ func New(input string) *Lexer {
 }
 
 func (l *Lexer) readChar() {
-	if l.readPosition >= len(l.input) {
+	if l.peekPosition >= len(l.input) {
 		l.ch = 0
 	} else {
-		l.ch = l.input[l.readPosition]
+		l.ch = l.input[l.peekPosition]
 	}
 
-	l.position = l.readPosition
-	l.readPosition++
+	l.position = l.peekPosition
+	l.peekPosition++
 }
 
 func (l *Lexer) peekChar(ch byte) bool {
-	if l.readPosition >= len(l.input) {
+	if l.peekPosition >= len(l.input) {
 		return false
 	}
 
-	if l.input[l.readPosition] == ch {
+	if l.input[l.peekPosition] == ch {
 		l.readChar()
 		return true
 	}
